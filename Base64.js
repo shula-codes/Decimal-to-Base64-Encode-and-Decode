@@ -5,24 +5,8 @@ let temp = '';
 let input = fs.readFileSync(inputFile);
 let Results_Written_To_File = [];
 
-temp = temp + input.toString();
 
-//console.log(input);
-let Counter = 1;
-
- var position_of_semicolon = temp.indexOf('\n');
- var input_card_numbers = [];
-input_card_numbers[0] = temp.substring(0, position_of_semicolon);
-
-for (Counter = 1; Counter < 5000; Counter++) {
-    let newInput = temp.slice((position_of_semicolon + 1), temp.length);
-    position_of_semicolon = newInput.indexOf('\n');
-    input_card_numbers[Counter] = newInput.substring(0, position_of_semicolon);
-    temp = newInput;
-
-}
-
-
+var input_card_numbers = input.toString().split('\r\n');
 
 //console.log(input_card_numbers);
 
@@ -138,7 +122,7 @@ for (NewLoopCounter = 0; NewLoopCounter < 5000; NewLoopCounter++) {
 
 var fs = require('fs');
 
-fs.writeFile('postBase64.txt', Write_String, function(Err){
+fs.writeFile('postBase64.csv', Write_String, function(Err){
     if(Err) {
         return console.log(Err);
     }
